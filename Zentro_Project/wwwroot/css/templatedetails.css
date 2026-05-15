@@ -1,0 +1,185 @@
+﻿body {
+}
+.btn-add-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+.btn-add:hover, .btn-add-question:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-add, .btn-add-question {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 7px 6px;
+    color: #000;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif !important;
+}
+
+@media (max-width:768px){
+    /* Shrink wrapper on mobile */
+    #saveNotificationWrapper.mobile-only {
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        display: block;
+    }
+
+        /* Shrink inner box */
+        #saveNotificationWrapper.mobile-only .save-notification {
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.45rem 0.05rem;
+            margin: 0 auto;
+        }
+
+        /* Hide info side on mobile */
+        #saveNotificationWrapper.mobile-only .save-notification-information {
+            display: none;
+        }
+
+        /* ✅ Fix buttons overflow issue */
+        #saveNotificationWrapper.mobile-only .save-notification-buttons {
+            width: auto; /* remove fixed width */
+            margin: 0; /* reset margins */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    /* Hide logo when notification is visible */
+    .logo-block.hidden {
+        display: none;
+    }
+}
+/* Wrapper to center inside navbar */
+#saveNotificationWrapper {
+    position: absolute; /* stays inside navbar */
+    top: 50%; /* center vertically */
+    left: 50%; /* center horizontally */
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 700px; /* same max width as original */
+    padding: .25rem; /* original overlay padding */
+    display: none; /* hidden by default */
+    z-index: 300; /* above navbar content */
+}
+
+
+/* Information side */
+.save-notification-information {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.icon-embed-xxsmall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin: 0 10px;
+    pointer-events: none;
+}
+
+.save-info-label {
+    pointer-events: none;
+    color: #dadada;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+/* Buttons area */
+.save-notification-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    height: 100%;
+    margin-right: 5px;
+}
+
+/* Standard buttons */
+.standard-button {
+    border-radius: .5rem;
+    background-color: #484848;
+    color: #fff;
+    font-weight: 400;
+    padding: 2px 2px;
+    min-width: 98px;
+    font-size: .75rem;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+    .standard-button.save-btn {
+        background-color: #fff;
+        color: #303030;
+        font-weight: 600;
+    }
+
+.multi-select-container {
+    /*width: 300px;*/
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.multi-select-search {
+    width: 100%;
+    padding: 8px;
+    /*border: 1px solid #ccc;*/
+    border-radius: 6px;
+    outline: none;
+}
+
+.multi-select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 8px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.09);
+}
+
+.multiselect-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .multiselect-option:hover {
+        background: #f2f2f2;
+    }
+
+    .multiselect-option input {
+        margin-right: 10px;
+        pointer-events: none; /* Prevent checkbox from blocking row click */
+    }
+
+.link-ellipsis {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

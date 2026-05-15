@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Preview Questions";
+    var templateVersionId = ViewData["TemplateVersionId"] as int?;
+}
+
+<link rel="stylesheet" href="~/css/commonpreview.css" />
+
+
+<div class="mainContainerCreateQoute">
+    <input type="hidden" name="TemplateVersionId" value="@ViewData["TemplateVersionId"]" />
+
+    <div class="container-c page-root body-c">
+        <header class="create-window-header-c title-margin-c">
+            <div class="page-title-container-c ">
+                <div class="back-button-c">
+                    <div class="back-button-svg-c" id="backButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14.75 8a.75.75 0 0 1-.75.75h-9.69l2.72 2.72a.749.749 0 1 1-1.06 1.06l-4-4a.747.747 0 0 1 0-1.06l4-4a.749.749 0 1 1 1.06 1.06l-2.72 2.72h9.69a.75.75 0 0 1 .75.75"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h1 class="main-heading-c"></h1>
+            </div>
+        </header>
+        <form method="post" asp-controller="Home" asp-action="SaveUserAnswersForCustomer" id="userAnswersForm">
+            <div class="capsule-containers-c">
+                <div id="question-render-root"></div>
+                <!-- ✅ METAFIELD SECTION  -->
+                <div class="item-c" id="metafields-container" style="display: none;">
+                    <div class="section-container-c">
+                        <header class="dropdown-header-c parentToggler shadow-c metafield-header">
+                            <span class="dropdown-header-text-c">Additional Information</span>
+                            <span class="carrot-c">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </span>
+                            <div class="section-line-breaker-c hidden"></div>
+                        </header>
+                    </div>
+
+                    <div class="section-container-c shadow-c hidden metafield-section">
+                        <section class="section-box-c top-corners-c less-padding-c">
+                            <div id="metafields-render-root">
+                                <!-- Metafields render here -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/general/generalajax.js"></script>
+     <script src="~/js/Templates/Template_Render.js"></script> 
+}
+

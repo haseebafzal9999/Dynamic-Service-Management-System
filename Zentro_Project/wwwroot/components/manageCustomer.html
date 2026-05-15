@@ -1,0 +1,121 @@
+﻿<div class="model-content" style="overflow: auto; max-width:720px; width:100%; max-height:90vh;">
+    <div class="model-header">
+        <div class="modal-window-header">
+            <div class="popup-title-container">
+                <h1 class="t1-pop-up-heading"><strong class="bold-text">Add a New Customer<br></strong></h1>
+            </div>
+            <div class="cross-button">
+                <div class="cross-button-svg w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="currentColor">
+                        <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="model-body pb-15">
+        <div class="polaris-container-with-ouline">
+            <div class="polaris-box-list-item-inner-wrapper form-flex-col">
+                <div class="polaris-form-cols">
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">First Name*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="firstName" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-firstName="" data-required>
+                            </div>
+                        </div>
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Last Name*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="lastName" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-lastName="" data-required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Email Address*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="emailAddress" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-emailAddress="" data-required>
+                            </div>
+                        </div>
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Phone Number*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="phoneNumber" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-phoneNumber="" data-required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polaris-form-cols">
+                    <div class="polaris-form-cols" style="margin-bottom:15px;">
+                        <div class="polaris-form-layout">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">
+                                    <div class="polaris-form-label">Address*</div>
+                                </div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="addressFirstLinePopup" class="polaris-form-field" autocomplete="none" data-required=""/>
+                            </div>
+                        </div>
+                        <div class="polaris-form-layout">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">
+                                    <div class="polaris-form-label">Apartment, suite, etc</div>
+                                </div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="addressSecondLinePopup" class="polaris-form-field" autocomplete="none" />
+                            </div>
+                        </div>
+                        <div class="polaris-form-row">
+                            <div class="polaris-form-layout row-responsive">
+                                <div class="polaris-form-label-wrapper">
+                                    <div class="polaris-form-label">City*</div>
+                                </div>
+                                <div class="polaris-form-field-wrapper">
+                                    <input id="cityPopup" class="polaris-form-field" autocomplete="none" data-required=""/>
+                                </div>
+                            </div>
+                            <div class="polaris-form-layout row-responsive">
+                                <div class="polaris-form-label-wrapper">
+                                    <div class="polaris-form-label">Zip/Postcode*</div>
+                                </div>
+                                <div class="polaris-form-field-wrapper">
+                                    <input id="postcodePopup" class="polaris-form-field" autocomplete="none" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="polaris-form-cols">
+                            <div class="polaris-form-layout">
+                                <div class="polaris-form-label-wrapper">
+                                    <div class="polaris-form-label">Country/Region*</div>
+                                </div>
+                                <div class="polaris-form-field-dropdown-wrapper">
+                                    <select id="countryPopupList" name="" class="polaris-form-field-dropdown" style="outline:none;" data-required="">
+                                        <option value="0">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="polaris-footer-line"></div>
+        <div class="buttons-row-container mt-40">
+            <button id="deleteCustomer" class="standard-button btn-small w-button hidden" style="background:#c70a24;width: auto;position: absolute;left: 20px;">Delete Customer</button>
+            <button class="standard-button mr-10 cancel-btn-model w-button">Cancel</button>
+            <button id="addCustomer" class="standard-button btn-small w-button ">Create Customer</button>
+        </div>
+    </div>
+</div>
+

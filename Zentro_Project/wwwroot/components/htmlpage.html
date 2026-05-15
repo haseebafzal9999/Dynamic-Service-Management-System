@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iframe Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        input[type=text] {
+            width: 80%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 6px 12px;
+            font-size: 14px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #aaa;
+            margin-top: 20px;
+        }
+
+        #log {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f3f3f3;
+            border: 1px solid #ccc;
+            height: 150px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Iframe Tester</h3>
+
+    <input id="url" type="text" placeholder="Enter iframe URL" value="https://localhost:7222/page/template/106#99c99e7a">
+    <button onclick="loadIframe()">Load</button>
+    <button onclick="openInNewTab()">Open in New Tab</button>
+
+    <hr>
+
+    <iframe id="testFrame"></iframe>
+
+    <div id="log"></div>
+
+    <script>
+        const logEl = document.getElementById('log');
+        const iframe = document.getElementById('testFrame');
+
+        function log(message) {
+            const p = document.createElement('p');
+            p.textContent = message;
+            logEl.appendChild(p);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        function loadIframe() {
+            const link = document.getElementById('url').value.trim();
+            log("Loading iframe: " + link);
+
+            iframe.onload = () => {
+                try {
+                    const href = iframe.contentWindow.location.href;
+                    log("IFRAME loaded successfully: " + href);
+                } catch (e) {
+                    log("IFRAME loaded but cannot access content (cross-origin): " + e);
+                }
+            };
+            iframe.onerror = () => {
+                log("IFRAME failed to load.");
+            };
+
+            iframe.src = link;
+        }
+
+        function openInNewTab() {
+            const link = document.getElementById('url').value.trim();
+            window.open(link, "_blank");
+        }
+    </script>
+
+</body>
+</html>

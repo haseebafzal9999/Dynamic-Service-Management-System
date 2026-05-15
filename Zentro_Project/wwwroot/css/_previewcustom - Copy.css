@@ -1,0 +1,911 @@
+﻿.page-root {
+    /* =========================
+       Colors
+       ========================= */
+    --color-bg: #0000;
+    --color-text-main: #303030;
+    --color-text-secondary: #303030;
+    --color-light-bg: #f1f1f1;
+    --color-box-bg: #ffffff;
+    --color-box-shadow: rgba(0,0,0,0.1);
+    --color-border: #dfe3e8;
+    --color-input-border: rgba(0,0,0,0.33);
+    /* Buttons */
+    --color-btn-save-bg: #484848; /*#004C8C;*/
+    --color-btn-save-hover: #003b6a;
+    --color-btn-preview-bg: rgba(227,227,227,1);
+    --color-btn-preview-text: rgba(48,48,48,1);
+    --color-btn-add-bg: #ffffff;
+    --color-btn-add-hover: #f1f1f1;
+    --color-btn-add-icon-border: #000000;
+    --color-cross-btn: #8a8a8a;
+    --color-cancel-btn-border: #e5e5e5;
+    --color-delete-btn: #cf161d;
+    --color-done-btn-bg: #3a3a3a;
+    /* =========================
+       Fonts
+       ========================= */
+    --font-family: 'Inter', sans-serif;
+    --font-size-base: 14px;
+    --font-size-small: 12px;
+    --font-size-medium: 0.8525rem;
+    --font-size-large: 1.25rem;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --line-height-base: 1.5;
+    --line-height-small: 1.25rem;
+    /* =========================
+       Spacing & Sizing
+       ========================= */
+    --radius-small: 0.25rem;
+    --radius-medium: 0.5rem;
+    --radius-large: 0.75rem;
+    --gap-small: 0.35rem;
+    --gap-medium: 0.5rem;
+    --gap-large: 0.75rem;
+    --btn-padding: 0.35rem 0.85rem;
+    --input-padding: 0.4rem;
+    /* Section specific spacing */
+    --section-padding: 24px 24px;
+    --section-sub-padding: 2px 20px 20px 10px;
+    /* =========================
+       Transitions
+       ========================= */
+    --transition-fast: 0.12s ease;
+    --transition-medium: 0.2s ease;
+    --transition-slow: 0.4s ease;
+    /* =========================
+       Modal & Popup
+       ========================= */
+    --modal-overlay-bg: rgba(0,0,0,0.5);
+    --modal-transform-start: translateY(40px);
+    --modal-transform-end: translateY(0);
+    --popup-header-bg: var(--color-light-bg);
+    --popup-sub-bg: var(--color-box-bg);
+    --popup-border: var(--color-border);
+    /* =========================
+       Question List
+       ========================= */
+    --question-bg: #f9f9f9;
+    --question-hover-bg: #f1f1f1;
+    /* =========================
+       Select
+       ========================= */
+    --select-arrow-size: 16px;
+    --select-padding-right: 1.5rem;
+    --select-padding-max-right: 3.0rem;
+    /* =========================
+       Misc
+       ========================= */
+    --icon-size-small: 1rem;
+    --icon-size-medium: 1.25rem;
+    --icon-size-large: 1.5rem;
+}
+
+
+
+/* =========================
+   Headings
+   ========================= */
+.main-heading-c {
+    color: var(--color-text-main);
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    margin: 0 5px 0 0;
+    align-items:center;
+}
+
+.general-c {
+    font-size: .89rem;
+    letter-spacing: 0rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+/* =========================
+   Window Header
+   ========================= */
+.create-window-header-c {
+    max-width: 652px;
+    width: 100%;
+    margin: -4px 0px 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-secondary);
+}
+
+.page-title-container-c {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+    box-sizing: border-box;
+    color: var(--color-text-secondary);
+}
+
+.back-button-c {
+    cursor: pointer;
+    margin-right: 10px;
+    display: block;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-medium);
+}
+
+    .back-button-c:hover {
+        background-color: #cecece;
+    }
+
+.back-button-svg-c {
+    pointer-events: none;
+    width: var(--icon-size-small);
+    height: var(--icon-size-small);
+    margin: 5px;
+    display: block;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+
+
+    .save-btn-container-c {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        text-align: justify;
+        margin: 0px 0 10px 0;
+        box-sizing: border-box;
+    }
+
+.btn-save-c {
+    background-color: var(--color-btn-save-bg);
+    color: #ffffff;
+    border-radius: var(--radius-medium);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--btn-padding);
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    width: 100%;
+    line-height: var(--line-height-base);
+    box-sizing: content-box;
+    transition: background var(--transition-medium);
+}
+
+
+/* =========================
+   Add Buttons
+   ========================= */
+
+
+/* =========================
+   Section Containers
+   ========================= */
+.section-container-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 652px;
+    margin: 0 auto; /* centers everything */
+}
+.custom-width-c{
+    max-width:620px;
+}
+.section-box-c {
+    background-color: var(--color-box-bg);
+    border-radius: var(--radius-large);
+    box-shadow: 0 2px 6px var(--color-box-shadow);
+    padding: var(--section-padding);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+.section-subheading-c {
+    color: var(--color-text-secondary);
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: var(--line-height-small);
+    margin: 4px 0 4px 0;
+}
+
+/* =========================f
+   Inputs
+   ========================= */
+.section-input-wrapper-c {
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius-medium);
+    width: 100%;
+    margin-top: 8px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+   
+}
+
+.section-input-c,
+.section-input-descriptive-c {
+    width: 100%;
+    border: none;
+    border-radius: var(--radius-medium);
+    color: var(--color-text-main);
+    font-size: var(--font-size-small); /* Same font size */
+    line-height: 1.5; /* Explicit line-height */
+    outline: none;
+    padding: var(--input-padding);
+    box-sizing: border-box;
+    padding-left: 0.75rem;
+    font-family: inherit; /* Ensure same font as parent */
+    background: transparent; /* Optional: remove default background */
+    resize: none; /* Optional: prevent resizing */
+}
+
+/* Only textarea-specific changes */
+.section-input-descriptive-c {
+    height: 8.5rem;
+}
+
+.section-input-c {
+    height: 2rem;
+}
+
+
+/* =========================
+   Line Breakers
+   ========================= */
+.section-line-breaker-c {
+    border-top: 1px solid #d9d9d9;
+    width: 100%;
+    max-width: 620px;
+    box-sizing: border-box;
+    background-color: #e5e7eb;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 4px;
+}
+
+.breaker-c {
+    width: 100%;
+    max-width: 650px;
+    margin: 10px 0 10px 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Buttons group
+   ========================= */
+
+/* =========================
+   Saved text and icon
+   ========================= */
+
+
+
+
+/* =========================
+   Question List
+   ========================= */
+
+
+/* =========================
+   Modals
+   ========================= */
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   Popup
+   ========================= */
+
+
+
+/* =========================
+   Select
+   ========================= */
+.selectt-c {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' stroke='black' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'>\
+<polyline points='6 9 12 15 18 9'/></svg>") no-repeat right 0.75rem center;
+    background-size: var(--select-arrow-size);
+    padding-right: var(--select-padding-right);
+}
+
+/* Each dropdown item */
+.dropdown-item-c {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    color: #333;
+    font-family: var(--font-family, Inter, sans-serif);
+    font-size: var(--font-size-base, 13px);
+    font-weight: var(--font-weight-medium, 500);
+    border-radius: 8px;
+}
+
+    .dropdown-item-c:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Delete-specific item */
+    .dropdown-item-c.delete-text {
+        color: #9c0938;
+    }
+
+        .dropdown-item-c.delete-text:hover {
+            background-color: #FFE2E2;
+        }
+
+/* Icon */
+.dropdown-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    fill: currentColor;
+}
+.radio-style-c {
+    box-sizing: border-box;
+    padding: 0;
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+/* =========================
+   Popup Headings
+   ========================= */
+
+
+
+
+.checkbox-wrapper-c {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    box-sizing: border-box;
+    align-items:center;
+    margin: 8px 0px 5px 0px;
+}
+.radio-style-c {
+    box-sizing: border-box;
+    padding: 0;
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    margin-left: 5px;
+    font-weight: 400;
+}
+.checkbox-text-c {
+    width: 100%;
+    float: left;
+    color: #333333;
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    display: block;
+    margin-left: 5px;
+    font-weight: 400;
+    margin-top:5px;
+}
+
+
+
+
+
+/*Quot Builder */
+.dropdown-header-c {
+    background-color: white;
+    padding: 9px 0;
+    border-radius: 0.75rem;
+    /*border-radius: 0.75rem 0.75rem 0 0;*/
+
+    width: 100%;
+    font-size: .875rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    color: #303030;
+    padding-top: 20px;
+    padding-bottom: 18px;
+}
+
+.dropdown-header-text-c {
+    margin-left: 12px;
+    cursor:pointer;
+}
+.carrot-c {
+    pointer-events: auto;
+    color: black;
+    width: var(--icon-size-large);
+    height: var(--icon-size-large);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 20px;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+    .carrot-c svg {
+        width: 100%;
+        height: 100%;
+    }
+
+.shadow-c {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.shadow-toggle-c {
+    box-shadow: 0 -4px 6px rgba(0,0,0,0.08);
+}
+
+.top-corners-c {
+    border-radius: 0 0 var(--radius-large) var(--radius-large);
+}
+.bottom-corners {
+    border-radius: 0.8rem 0.8rem 0 0 ;
+}
+.rotate-180-c {
+    transform: rotate(180deg);
+}
+.no-margin-c{
+    margin:15px 0px 12px 3px; 
+}
+.no-top-margin-c{
+    padding: 7px 0px;
+    margin-top:0px;
+    margin-right:16px;
+}
+
+.line-modal-margin-c{
+    margin-left:0px;
+    margin-right:6px;
+}
+    .less-padding-c {
+        padding: 0px 14px 24px 14px;
+    }
+.less-top-margin-c{
+    margin-top:-10px;
+    /*margin-top:2px;*/
+}
+
+.question-bottom-margins-c{
+    margin-bottom:0px;
+}
+.less-width-select-c{
+    width:40%;
+}
+.less-width-select2-c {
+    width: 90%;
+}
+
+.custom-bg-c {
+    background-color: #ebebeb;
+}
+.selects-wrapper-c{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    padding:0px;
+    align-items:center;
+}
+.line-item-cross-container-c {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+ 
+    padding-top:4px;
+    box-sizing: border-box;
+    color: #333;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom:5px;
+}
+.line-item-cross-btn-c {
+    width: auto;
+    height: auto;
+    padding: 2px;
+    background-color: transparent;
+    
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: button;
+    overflow: visible;
+}
+    .line-item-cross-btn-c:disabled {
+        cursor: not-allowed;
+        opacity: 0.5; /* keeps the original shade but dimmed */
+        filter: brightness(0.9); /* lowkey faded effect */
+    }
+.line-item-modal-c{
+    padding:2px 11px;
+    margin-right:16px;
+}
+.btn-save-c:disabled {
+    background-color: var(--color-btn-save-bg);
+    opacity: 0.5; /* dimmed but shade still visible */
+    cursor: not-allowed;
+}
+
+/* Change checkboxes and radio buttons check color */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: blue; /* sets the checked indicator color */
+}
+
+.title-margin-c{
+    margin-left:53px;
+}
+
+.end{
+    margin-bottom:64px;
+
+
+
+}
+.parent-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+/* Center container with a proper width for desktops */
+/*.container-c {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;*/ /* full width on desktops */
+    /*margin: 0 auto;*/ /* center horizontally */
+/*}*/
+
+.container-c {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%; /* take full width */
+    max-width: 800px; /* but don't grow beyond this */
+    margin: 0 auto; /* center it */
+    padding: 0 12px; /* optional: small side padding */
+}
+
+.capsule-containers-c {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.item-c {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.quote-custom-table-c {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    color: #726e6e;
+    border: 0.1rem solid #e1e3e5;
+    table-layout: fixed; /* Keep this so widths are respected */
+    padding: 0px 2px;
+}
+
+    .quote-custom-table-c th,
+    .quote-custom-table-c td {
+        border-bottom: 0.1rem solid #e1e3e5;
+        padding: 12px;
+        text-align: left;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .quote-custom-table-c th {
+        padding: 8px 12px;
+    }
+
+    .quote-custom-table-c thead {
+        background: #f7f7f7;
+        color: #726e6e;
+    }
+
+    .quote-custom-table-c tbody tr:hover {
+        background: #f1f1f1;
+    }
+
+/* -------------------- Scrollable tbody safely -------------------- */
+
+.autocomplete-wrapper-c {
+    position: relative; /* dropdown will be positioned absolutely inside */
+}
+
+.autocomplete-dropdown-c {
+    position: fixed; /* changed from absolute */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+    .autocomplete-dropdown-c .dropdown-item-c {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+        .autocomplete-dropdown-c .dropdown-item-c:hover {
+            background-color: #f1f1f1;
+        }
+
+
+
+.quote-wrapper-c{
+    margin:0px;
+}
+.quote-input-c{
+}
+.quote-icon-c {
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0;
+    fill: #c30000 !important;
+    cursor:pointer;
+}
+.quote-icon-c {
+    transition: none !important;
+}
+
+
+.quote-create-c {
+    width: unset !important;
+}
+
+@media (max-width: 992px) {
+    .container-c {
+        max-width: 90%; /* take more space on smaller screens */
+    }
+    .title-margin-c{
+        margin-left:0px;
+    }
+}
+
+/* Mobile: full width with padding */
+@media (max-width: 600px) {
+    .container-c {
+        max-width: 100%;
+        padding: 0 8px;
+    }
+
+    .dropdown-header-text-c {
+        font-size: 0.8rem;
+    }
+
+    .carrot-c {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
+
+/*-----------Template-----------------*/
+
+
+
+
+
+
+.tableShortcuts-c button, .tableFilters button, .tableShortcuts-c .selectedShortcut-c {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    height: 1.75rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    color: #4a4a4a;
+}
+
+
+
+
+
+    /* Header row style */
+    .custom-table thead {
+        background: #f7f7f7;
+        color: #726e6e;
+    }
+
+
+
+
+
+
+
+
+
+#quoteTable tbody {
+    display: block; /* make body scrollable */
+    max-height: 10px; /* scroll starts after ~2 rows */
+    overflow-y: auto;
+}
+
+
+
+.pound-wrapper-c {
+    display: flex;
+    align-items: center;
+}
+
+.pound-symbol-c {
+    position: absolute;
+    left: 8px;
+    color: #555;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.pound-wrapper-c input {
+    padding-left: 20px; /* Leaves space for £ */
+    text-align: left;
+}
+
+
+
+
+
+/*Register Page*/
+
+
+/* Overlay with blur effect */
+
+
+
+/* Strap/Header */
+
+
+/* Logo Section */
+
+/* Form Section */
+
+/* Button */
+/* Animation */
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.custom-border-c{
+    border-radius:0.75rem 0.75rem 0rem 0rem;
+}
+
+
+
+
+
+/*      Adddin a new code for sticky note taht appear on left side */
+
+
+/* Main layout container */
+
+
+/* Headings */
+
+
+/* Customer Name Section */
+
+
+
+/* Main content placeholder */
+
+
+
+/* Enabled visual state */
+
+
+/* m Media query for showing the stiky part that contain customer name resonsive on mobile view */
+
+
+
+/* Main layout container */
+
+
+/* Sticky Quote Details Container */
+
+
+/* Headings */
+
+
+
+
+/* Main content placeholder */
+
+.required-asterisk-c {
+    color: red;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+
+/* --- Smooth transition for group open/close --- */
+/*.section-container-c {
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    overflow: hidden;
+}*/
+
+    /* When section is visible */
+    /*.section-container-c.show {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 2000px;*/ /* enough space for questions */
+    /*}*/
+
+        /* Fade-in effect for each question */
+        /*.section-container-c.show .question-bottom-margins-c {
+            animation: fadeInSlide 0.4s ease forwards;
+        }
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}*/
+
+
+/* m Media query for showing the stiky part that contain customer name resonsive on mobile view */
+
+
+/* Add this to your CSS */
+/*.header-no-bottom-radius {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}*/

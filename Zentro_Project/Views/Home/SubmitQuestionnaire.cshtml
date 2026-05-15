@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Submit Questionnaire</title>
+</head>
+<body>
+
+    @{
+        ViewData["Title"] = "Submit Questionnaire";
+        // Layout = "_ForCustomer";
+    }
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f6f8fa;
+        }
+
+        /* Backdrop */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        /* Modal */
+        .modal {
+            background: #fff;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            text-align: center;
+            animation: fadeInUp 0.35s ease;
+        }
+
+            .modal h2 {
+                margin-top: 0;
+                color: #0f172a;
+            }
+
+            .modal p {
+                color: #334155;
+                margin: 1rem 0;
+                font-size: 1rem;
+            }
+
+        .quote-ref {
+            margin: 1rem 0;
+            font-weight: bold;
+            background: #f1f5f9;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            background: #0f172a;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background: #1e293b;
+            }
+
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .modal {
+                padding: 1rem;
+            }
+
+            .quote-ref {
+                font-size: 1rem;
+            }
+        }
+
+        .fontconfig {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            color: #303030;
+        }
+
+    </style>
+
+
+
+    <!-- Modal Backdrop (opens by default) -->
+    <div class="modal-backdrop" id="quoteModal">
+        <div class="modal fontconfig">
+            <h2>Thank You!</h2>
+            <p>Thank you for submitting the quote — we'll get back to you shortly.</p>
+            <p>Here is your quote reference number:</p>
+            <div class="quote-ref">@ViewBag.QuoteRef</div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

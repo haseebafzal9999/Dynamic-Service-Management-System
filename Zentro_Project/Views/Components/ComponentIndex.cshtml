@@ -1,0 +1,85 @@
+﻿@{
+
+}
+<div class="main-window-header">
+    <div class="page-title-container">
+        <h1 class="t1-heading">Components:</h1>
+        <h1 class="t1-heading tableCount">All Components<span></span></h1>
+    </div>
+    <button data-createComp class="standard-button w-button add-custom-btn" style="min-width:150px;">Create Component</button>
+</div>
+<div id="componentTable" class="innerBottomContainer hidden">
+    <div class="shortcutSearchContainer">
+        <div id="searchBox" class="searchBoxInTable">
+            <div class="tableSearchContainer">
+                <input id="tableSearch" type="text" placeholder="Search Components" autocomplete="off" />
+                <button id="crossSearch">
+                    <img src="/images/search cross.svg" alt="cross" />
+                </button>
+            </div>
+        </div>
+        <div class="tableShortcuts">
+            <button class="selectedShortcut">All</button>
+        </div>
+        <div class="filterContainer">
+            <button id=cancelSearch>
+                <span>Cancel</span>
+            </button>
+            <button id=searchFilter>
+                <span class="searchIcon"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.323 13.383a5.5 5.5 0 1 1 1.06-1.06l2.897 2.897a.75.75 0 1 1-1.06 1.06l-2.897-2.897Zm.677-4.383a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"></path></svg></span>
+                <span class="filterIcon"><svg viewBox="0 0 20 20"><path d="M3 6a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75Z"></path><path d="M6.75 14a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75Z"></path><path d="M5.5 9.25a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Z"></path></svg></span>
+            </button>
+        </div>
+    </div>
+    <div class="tableFilters">
+    </div>
+    <div class="tableContainer scroll">
+        <table id="table">
+            <thead id="TableHead">
+                <tr></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div id="noInfo">
+            <div class="noInfoInnerContainer">
+                <div class="noInfoContentContainer">
+                    <img src="/images/search display.svg" alt="search Icon" />
+                    <h1>No Components Found</h1>
+                    <p>Try changing the search terms.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-NoRecords class="polaris-box-no-records hidden">
+    <div class="polaris-box-no-item-container">
+        <div class="icon-50 w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                <path d="M681-495q-24 0-42-18t-18-42v-145q0-24 18-42t42-18h99q24 0 42 18t18 42v145q0 24-18 42t-42 18h-99Zm-250 0q-24 0-42-18t-18-42v-145q0-24 18-42t42-18h99q24 0 42 18t18 42v145q0 24-18 42t-42 18h-99Zm-251 0q-24 0-42-18t-18-42v-145q0-24 18-42t42-18h99q24 0 42 18t18 42v145q0 24-18 42t-42 18h-99Zm0 295q-24 0-42-18t-18-42v-145q0-24 18-42t42-18h99q24 0 42 18t18 42v145q0 24-18 42t-42 18h-99Zm251 0q-24 0-42-18t-18-42v-145q0-24 18-42t42-18h99q24 0 42 18t18 42v145q0 24-18 42t-42 18h-99Zm250 0q-24 0-42-18t-18-42v-145q0-24 18-42t42-18h99q24 0 42 18t18 42v145q0 24-18 42t-42 18h-99Z" />
+            </svg>
+        </div>
+        <div class="no-items-text">There are no components found<br>All components will show here</div>
+        <button data-createComp class="standard-button w-button add-custom-btn">Create a Component</button>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="~/js/Tables/Table Functions/global-Functions.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Table Functions/table-CheckboxClass.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Table Functions/create-TableClass.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Tables Settings/componentSettings.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Components/components_table.js" asp-append-version="true"></script>
+    <script src="~/js/Components/components_list.js" asp-append-version="true"></script> 
+    <script>
+        $(document).ready(function () {
+           window.componentsPageSetup = new componentsManager();
+            let componentsList = new componentsTable(settings);
+        })
+
+    </script>
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/tables.css" asp-append-version="true" />
+}

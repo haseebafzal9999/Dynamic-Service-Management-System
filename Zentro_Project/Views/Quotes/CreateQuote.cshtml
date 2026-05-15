@@ -1,0 +1,233 @@
+﻿
+
+<link rel="stylesheet" href="~/css/commonpreview.css" />
+ 
+
+<div class="mainContainerCreateQoute">
+    <div class="quote-details-c" style="margin-top:63px;z-index: 0;">
+        <div class="customerName">
+            <div class="quote-heading-c">Customer Name:</div>
+            <span class="customerNamefromDB"></span>
+        </div>
+        <div class="quote-sub-details-c">
+            <div class="quote-heading-c">Quote Summary:</div>
+            <div class="sticky-note">
+                <div id="sticky-total-cost"></div>
+                <div id="sticky-total-sell"></div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="QuoteId" value="@ViewData["QuoteId"]" />
+
+<div class="container-c page-root body-c">
+    <header class="create-window-header-c title-margin-c">
+        <div class="page-title-container-c ">
+            <div class="back-button-c">
+                <div class="back-button-svg-c">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14.75 8a.75.75 0 0 1-.75.75h-9.69l2.72 2.72a.749.749 0 1 1-1.06 1.06l-4-4a.747.747 0 0 1 0-1.06l4-4a.749.749 0 1 1 1.06 1.06l-2.72 2.72h9.69a.75.75 0 0 1 .75.75"></path>
+                    </svg>
+                </div>
+            </div>
+                <h1 class="main-heading-c"></h1>
+       </div>
+
+            <button class="btn btn-preview custom-dropdown-btn"
+                    style="margin-right:10px; display:none;"
+                    type="button"
+                    id="downloadBtn">
+                Download
+            </button>
+            <input type="hidden" name="TemplateId" value="userAnswer.TemplateId" />
+            <input type="hidden" name="CustomerId" value="userAnswer.CustomerId" />
+            <input type="hidden" name="type" value="create" />
+
+            <button class="btn btn-preview"
+                    style="display:none;"
+                    id="createRevisionBtn"
+                    
+            >
+                Create a new revision
+            </button>
+
+
+        </header>
+        @* <form method="post" asp-controller="Question" asp-action="SaveUserAnswers" id="userAnswersForm"> *@
+        <form method="post" asp-controller="Home" asp-action="SaveUserAnswersForCustomer" id="userAnswersForm">
+            <input type="hidden" name="TemplateId" id="TemplateId" value="" />
+            <input type="hidden" name="CustomerId" id="CustomerId" value="" />
+            <input type="hidden" name="TemplateVersion" id="TemplateVersion" value="" />
+            <input type="hidden" name="RecStatusId" value="" /> 
+            @* Render Questions/Answers *@
+            <div class="capsule-containers-c">
+                <div id="question-render-root"></div>
+
+                <div class="item-c" id="metafields-container" style="display: none;">
+                    <div class="section-container-c">
+                        <header class="dropdown-header-c parentToggler shadow-c metafield-header">
+                            <span class="dropdown-header-text-c">Additional Information</span>
+                            <span class="carrot-c">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </span>
+                            <div class="section-line-breaker-c hidden"></div>
+                        </header>
+                    </div>
+
+                    <div class="section-container-c shadow-c hidden metafield-section">
+                        <section class="section-box-c top-corners-c less-padding-c">
+                            <div id="metafields-render-root">
+                                <!-- Metafields will be rendered here by JavaScript -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="submit-container-c">
+                <div class="save-btn-container-c submit-width-c ">
+                    <button id="btn-save-1" type="button" class="btn-save-c submit-padding-c" data-state="review">
+                        Review Quote &amp; Add Services
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-overlay-c page-root body-c" id="services-modal">
+        <div class="section-container-c custom-width-c quote-width-c">
+            <header class="popup-section-header-c">
+                <span class="popup-header-text-c quote-header-margin-c" style="font-size: 14px;
+    color: #303030 !important;
+    font-weight: 500;">Add Services</span>
+                <span class="cross-button-svg-c" style="width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 0px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z"></path>
+                    </svg>
+                </span>
+            </header>
+
+
+            <div class="popup-sub-box-c quote-radius-c">
+                <div class="section-container-c full-width-c" id="container">
+
+
+
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="TemplateId" id="form-TemplateId" value="@ViewData["TemplateID"]" />
+                    <input type="hidden" name="TemplateVersion" id="form-TemplateVersion" value="@ViewData["TemplateVersionID"]" />
+                    <input type="hidden" name="RecStatusId" id="RecStatusId" value="@ViewData["QuoteId"]" />
+                    <input type="hidden" name="CustomerId" id="form-CustomerId" value="@ViewData["CustomerId"]" />
+                    <input type="hidden" name="currency" id="currencyInput" value="en-GB" />
+                    <div class="polaris-container-with-ouline custom-margin">
+                        <header class="dropdown-header-c template-dropdown-header-c template-bottom-corners-c" id="header">
+
+
+
+
+
+                            <div class="search-bar-wrapper-c hidden">
+                                <input type="text" placeholder="Search..." class="search-bar-input-c">
+                                <button class="search-bar-clear-c" id="cross">
+                                    <img src="/images/search_cross.svg" alt="cross">
+                                </button>
+                            </div>
+                            <div class="tableShortcuts-c">
+                                <span class="selectedShortcut-c">All Services</span>
+                            </div>
+                            <div class="search-filter-icons-wrapper-c no-hover-c quote-filter-c" id="dropDownToggle-add" style="width:33px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26">
+                                    <circle cx="12" cy="12" r="9" fill="#484848" stroke="#484848" stroke-width="1.5"></circle>
+                                    <line x1="12" y1="9" x2="12" y2="15" stroke="#fff" stroke-width="1.5" stroke-linecap="round"></line>
+                                    <line x1="9" y1="12" x2="15" y2="12" stroke="#fff" stroke-width="1.5" stroke-linecap="round"></line>
+                                </svg>
+
+                                <!-- Dropdown stays inside wrapper -->
+                                <div class="more-actions-dropdown-c quote-dropdown-c" id="dropdownMenu-add">
+                                    <div class="dropdown-item-c" id="item-level-1">
+
+                                        <span class="dropdown-text-c">Add Level 1 Item</span>
+                                    </div>
+                                    <div class="dropdown-item-c" id="item-level-2">
+
+                                        <span class="dropdown-text-c">Add Level 2 Item</span>
+                                    </div>
+                                    <div class="dropdown-item-c" id="item-level-3">
+
+                                        <span class="dropdown-text-c">Add Level 3 Item</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </header>
+
+                        <div class="quote-custom-table-wrapper-c">
+
+                            <table class="quote-custom-table-c ">
+                                <colgroup>
+                                    <col class="col-checkbox-c" style="width: 3%;">
+                                    <col class="col-id-c" style="width: 5%;">
+                                    <col class="col-name-c" style="width: 15%;">
+                                    <col class="col-description-c" style="width: 30%;">
+                                    <col class="col-quantity-c" style="width: 6%;">
+                                    <col class="col-unit-c" style="width: 6%;">
+                                    <col class="col-price-c" style="width: 8%;">
+                                    <col class="col-total-c" style="width: 8%;">
+                                    <col class="col-actions-c" style="width: 5%;">
+                                </colgroup>
+
+                                <thead>
+                                    <tr class="quote-custom-table-head">
+                                        <th></th>
+                                        <th>#</th>
+                                        <th>Service Name</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Item Price</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="total-wrapper-c">
+                            <div class="total-c">
+                                <span>Total</span>
+                                <span class="grand-total-value-c">0.00</span>
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="polaris-footer-line"></div>
+                    <div class="save-btn-container-c template-save-width-c quote-create-wrapper-c">
+                        <button type="submit" class="btn-save-c template-save-padding-c quote-create-c right-margin">Create Quote</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/general/generalajax.js"></script>
+    <script src="~/js/quotes/CreateQuote_Render.js"></script>
+    <script src="~/js/quotes/ServiceManager.js"></script>
+    @* <script src="~/js/quotes/services.js"></script> *@
+
+
+}
+

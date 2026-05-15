@@ -1,0 +1,85 @@
+﻿@{
+
+}
+<div class="main-window-header">
+    <div class="page-title-container">
+        <h1 class="t1-heading">Templates:</h1>
+        <h1 class="t1-heading tableCount">All Templates<span></span></h1>
+    </div>
+    <button data-createTemplate class="standard-button w-button add-custom-btn" style="min-width:130px;">Create Template</button>
+</div>
+<div class="innerBottomContainer hidden">
+    <div class="shortcutSearchContainer">
+        <div id="searchBox" class="searchBoxInTable">
+            <div class="tableSearchContainer">
+                <input id="tableSearch" type="text" placeholder="Search Templates" autocomplete="off" />
+                <button id="crossSearch">
+                    <img src="/images/search cross.svg" alt="cross" />
+                </button>
+            </div>
+        </div>
+        <div class="tableShortcuts">
+            <button class="selectedShortcut">All</button>
+        </div>
+        <div class="filterContainer">
+            <button id=cancelSearch>
+                <span>Cancel</span>
+            </button>
+            <button id=searchFilter>
+                <span class="searchIcon"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.323 13.383a5.5 5.5 0 1 1 1.06-1.06l2.897 2.897a.75.75 0 1 1-1.06 1.06l-2.897-2.897Zm.677-4.383a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"></path></svg></span>
+                <span class="filterIcon"><svg viewBox="0 0 20 20"><path d="M3 6a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75Z"></path><path d="M6.75 14a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75Z"></path><path d="M5.5 9.25a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Z"></path></svg></span>
+            </button>
+        </div>
+    </div>
+    <div class="tableFilters">
+    </div>
+    <div class="tableContainer scroll">
+        <table id="table">
+            <thead id="TableHead">
+                <tr></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div id="noInfo">
+            <div class="noInfoInnerContainer">
+                <div class="noInfoContentContainer">
+                    <img src="/images/search display.svg" alt="search Icon" />
+                    <h1>No Templates Found</h1>
+                    <p>Try changing the search terms.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-NoRecords class="polaris-box-no-records hidden">
+    <div class="polaris-box-no-item-container">
+        <div class="icon-50 w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                <path d="M320-460h320v-60H320v60Zm0 120h320v-60H320v60Zm0 120h200v-60H320v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554h189L551-820v186Z" />
+            </svg>
+        </div>
+        <div class="no-items-text">There are no templates found<br>All templates will show here</div>
+        <button data-createTemplate class="standard-button w-button add-custom-btn" style="min-width:130px;">Create a Template</button>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="~/js/Tables/Table Functions/global-Functions.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Table Functions/table-CheckboxClass.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Table Functions/create-TableClass.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Tables Settings/templateSettings.js" asp-append-version="true"></script>
+    <script src="~/js/templates/template_list.js" asp-append-version="true"></script>
+    <script src="~/js/Tables/Templates/template_table.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+           let templatePageSetup = new templateManager();
+           let templateList = new templateTable(settings);
+        })
+    </script>
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/tables.css" asp-append-version="true" />
+}

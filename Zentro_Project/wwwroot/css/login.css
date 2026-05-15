@@ -1,0 +1,275 @@
+﻿/* ================================
+   Global resets & base
+================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.wf-force-outline-none[tabindex="-1"]:focus {
+    outline: none;
+}
+
+/* ================================
+   Layout
+================================ */
+.page-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+.bg-radial {
+    background: radial-gradient(ellipse at center, #3a3a3a 0%, #2a2a2a 60%);
+}
+
+.brand-container {
+    width: 100%;
+    max-width: 423px;
+    margin-bottom: 150px;
+}
+
+/* ================================
+   Branding
+================================ */
+.brand {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.brand img {
+    width: 128px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.brand .title {
+    margin-top: 8px;
+    font-weight: 700;
+    color: #ff8a1f;
+    letter-spacing: 1px;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.brand .subtitle {
+    color: #ddd;
+    font-size: 13px;
+    margin-top: 2px;
+    font-weight: 600;
+}
+
+/* ================================
+   Card
+================================ */
+.card {
+    width: 100%;
+    max-width: 520px;
+    background: linear-gradient(180deg, rgba(20,20,20,0.9), rgba(28,28,28,0.95));
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.card-inner {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* ================================
+   Headings
+================================ */
+.heading {
+    text-align: left;
+    color: #f3f3f3;
+    font-size: 18px;
+    margin-bottom: 28px;
+    font-weight: 600;
+}
+
+.heading-center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ================================
+   Form fields
+================================ */
+.field {
+    margin-bottom: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button#login,
+button#registerSubmit,
+button.send-reset {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.input-small {
+    font-size: 13px!important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 12px 14px;
+    background: #222;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #fff;
+    outline: none;
+}
+
+input::placeholder {
+    color: #9a9a9a;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    font-size: 13px !important; /* match your normal input size */
+    line-height: 1.4 !important;
+    -webkit-text-fill-color: #fff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #222 inset !important; /* restore dark background */
+    box-shadow: 0 0 0px 1000px #222 inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* ================================
+   Buttons
+================================ */
+button#login, button#registerSubmit {
+    margin-top: 40px;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(90deg, #ff7b00 0%, #ff9600 100%);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(255,140,40,0.12);
+}
+
+    button#login:active {
+        transform: translateY(1px);
+    }
+
+.btn-login {
+    margin-top: 39px;
+}
+
+button.send-reset {
+    padding: 12px;
+}
+
+/* ================================
+   Meta rows, links, divider
+================================ */
+.meta-row {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #cfcfcf;
+    font-size: 13px;
+}
+
+.meta-row a {
+    color: #ff9a3a;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+
+.meta-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255,255,255,0.02);
+    margin: 18px 0;
+}
+
+.divider-tight {
+    margin: 2px;
+}
+
+/* ================================
+   Text & messages
+================================ */
+.muted {
+    color: #bcbcbc;
+    font-size: 13px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.forgot-sub {
+    color: #d0d0d0;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.forgot-center {
+    text-align: center;
+    margin-bottom: 17px;
+}
+
+.footer-text {
+    margin-top: 18px;
+    text-align: center;
+    color: #bdbdbd;
+    font-size: 13px;
+}
+
+/* ================================
+   Spacing helpers
+================================ */
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.brand-container .text-link {
+    color: #908a8a!important;
+}
+
+.brand-container .line {
+    background-color: #908a8a!important;
+}
+
+/* ================================
+   Responsive
+================================ */
+@media (max-width: 480px) {
+    .card {
+        padding: 18px;
+    }
+
+    .brand img {
+        width: 96px;
+    }
+
+    .card-inner {
+        max-width: 100%;
+    }
+}

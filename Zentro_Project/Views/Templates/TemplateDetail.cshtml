@@ -1,0 +1,612 @@
+﻿@model zentro.View_Model.UserModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var tempVersionId = ViewData["TempVersionId"]?.ToString();
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link href="~/css/templatedetails.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/tables.css" asp-append-version="true" />
+<div id="template-data"
+     data-temp-version-id="@tempVersionId">
+   @*    data-is-new-template="false"> *@
+</div>
+<input type="hidden" id="latestVersionHolder" />
+<input type="hidden" id="templateIdHolder"   />
+
+<link href="~/css/template_builder.css" rel="stylesheet" asp-append-version="true" />
+
+<div class="polaris-box-container">
+<div class="main-window-header max-750 mb-30">
+    <div class="page-title-container">
+        <div class="back-button back-button-c">
+            <div class="back-button-svg w-embed">
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M14.75 8a.75.75 0 0 1-.75.75h-9.69l2.72 2.72a.749.749 0 1 1-1.06 1.06l-4-4a.747.747 0 0 1 0-1.06l4-4a.749.749 0 1 1 1.06 1.06l-2.72 2.72h9.69a.75.75 0 0 1 .75.75"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- Template name populated dynamically -->
+            <h1 class="t1-heading" id="templateHeading"></h1>
+    </div>
+
+    <div class="header-btn-wrapper" style="margin-top: 0px;">
+
+        <!-- Version Dropdown -->
+        <div class="dropdown-wrapper" style="position: relative; display: inline-block;">
+            <button class="btn btn-preview custom-dropdown-btn with-arrow" id="versionDropdownBtn">
+                Version
+            </button>
+            <div class="more-actions-dropdown custom-dropdown-menu" id="versionDropdownMenu">
+                <form method="get" id="versionsDropDownForm">
+                    @* <input type="hidden" name="id" id="templateIdHidden" /> *@
+                    <div id="versionList"></div>
+                </form>
+            </div>
+        </div>
+
+        <button class="btn btn-preview" id="preview">Preview</button>
+
+        <!-- More Actions Dropdown -->
+        <div class="dropdown-wrapper" style="position: relative; display: inline-block;">
+            <button class="btn btn-preview custom-dropdown-btn with-arrow" id="dropdownBtn">
+                More Actions
+            </button>
+
+            <div class="more-actions-dropdown custom-dropdown-menu" id="moreActionsDropdown">
+                <div class="dropdown-item">
+                    <img src="/images/about-template.svg" class="dropdown-icon" />
+                    <span class="dropdown-text" id="aboutTemplate">About Template</span>
+                </div>
+
+                <div class="dropdown-item" id="templateStatusWrapper">
+                    <svg class="dropdown-icon" id="templateStatusIcon"></svg>
+                    <span class="dropdown-text" id="deactivateTemplate"></span>
+                </div>
+                    <div class="dropdown-item">
+                        <img src="/images/plus-circle-svg.svg">
+                        <span class="dropdown-text" id="addIFrame">Create an Iframe</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <svg class="saved-svg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                             fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+
+                            <!-- List lines -->
+                            <line x1="3" y1="6" x2="11" y2="6" />
+                            <line x1="3" y1="10" x2="11" y2="10" />
+                            <line x1="3" y1="14" x2="11" y2="14" />
+
+                            <!-- Link chain -->
+                            <path d="M13 5.5l2-2a2 2 0 0 1 3 3l-2 2" />
+                            <path d="M12 7l-2 2a2 2 0 0 0 3 3l2-2" />
+                        </svg>
+
+
+                        <span class="dropdown-text" id="viewIFrames">See created links</span>
+                    </div>
+                <div class="dropdown-item delete-text">
+                    <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 0 1-1 .5H7a1 1 0 0 1-1-.5L4 9zm5 2v8h2v-8H9zm4 0v8h2v-8h-2zM9 4V2h6v2h5v2H4V4h5z" />
+                    </svg>
+                    <span class="dropdown-text">Delete</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+   <div class="form-section max-750">
+    <div class="form-section-title-container">
+        <h1 class="from-section-title">General Information</h1>
+    </div>
+
+    <div class="form-section max-750 align-left">
+        <div class="polaris-box box-850">
+            <div class="polaris-box-list-item user-information">
+                <div class="polaris-box-list-item-inner-wrapper form-flex-col">
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Name*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="templateName" 
+                                    name="templateName" 
+                                    class="polaris-form-field" 
+                                    autocomplete="none" 
+                                    data-required 
+                                    data-type="text" 
+                                    data-startDate 
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Description</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <textarea 
+                                    id="templateDes" 
+                                    class="polaris-form-field-textarea" 
+                                    autocomplete="none" 
+                                    maxlength="300" 
+                                    rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden fields -->
+                    <input type="hidden" id="latestVersionNumber" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section-line-breaker max-750"></div>
+</div>
+
+<div class="form-section max-750">
+    <div class="form-section-title-container">
+        <h1 class="from-section-title">Question Groups</h1>
+    </div>
+
+    <div class="section-container">
+        <section class="section-box">
+            <div class="section-heading-container">
+                <h1 class="section-heading general">Question Groups</h1>
+            </div>
+
+            <div id="groupsList">
+                <!-- Question groups will be dynamically inserted here -->
+            </div>
+
+            <!-- Always show Add Group button -->
+            <div class="btn-add-wrapper" id="addGroupWrapper">
+                <button class="btn-add" type="button" id="addGroupBtn">
+                    <img src="/images/plus-circle-svg.svg">
+                    <span class="btn-add-text">Add group</span>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div class="form-section-line-breaker max-750"></div>
+</div>
+
+    <div class="form-section max-750">
+        <div class="form-section-title-container">
+            <h1 class="from-section-title">Questions & Answers</h1>
+        </div>
+
+        <div class="section-container">
+            <section class="section-box">
+                <div class="section-heading-container">
+                    <h1 class="section-heading general">Question & Answers</h1>
+                </div>
+
+                <h2 class="section-subheading" id="appendHeading">Questions</h2>
+
+                <!-- Questions dynamically populated -->
+                <div id="questionsList"></div>
+
+                <!-- Modal Overlay: Add Question -->
+                <div class="modal-overlay">
+                    <div class="section-container custom-width">
+                        <header class="popup-section-header">
+                            <h1 class="t1-pop-up-heading" style="margin-left:7px">
+                                <strong class="bold-text">Add a new question<br></strong>
+                            </h1>
+                            <span class="cross-button-svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </header>
+
+                        <section class="section-box-popup">
+                            <div class="popup-sub-box">
+                                <h2 class="section-subheading">Question</h2>
+                                <div class="section-input-wrapper">
+                                    <input id="modal1-input" type="text" class="section-input">
+                                </div>
+
+                                <h2 class="section-subheading popup-heading">Group</h2>
+                                <div class="section-input-wrapper">
+                                    <select class="section-input selectt" id="groupSelect"></select>
+                                </div>
+
+                                <h2 class="section-subheading popup-heading">Field Type</h2>
+                                <div class="section-input-wrapper">
+                                    <select class="section-input selectt" id="fieldTypeSelect"></select>
+                                </div>
+
+                                <div class="checkbox-wrapper" style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="isRequiredCheckbox" class="section-checkbox" />
+                                    <h2 class="section-subheading popup-heading" style="margin: 0;">Is Required?</h2>
+                                </div>
+
+                                <h2 class="section-subheading popup-heading popup-heading-bold" id="subheadingbold">Answers</h2>
+
+                                <div class="btn-add-wrapper" id="addbtnmodal1">
+                                    <button class="btn-add btn-add-question" type="button" id="btn-add2">
+                                        <img src="/images/plus-circle-svg.svg" />
+                                        <span class="btn-add-text">Add answer</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="section-box-line">
+                                <div class="section-line-breaker"></div>
+                            </div>
+
+                           <div class="popup-actions-wrapper">
+    <button type="button" class="cancel-button" id="modal-cancel-button">Cancel</button>
+    <button type="button" class="delete-button hidden" id="modal-delete-button">Delete</button>
+    <button type="button" class="create-button" id="modal1-create-button">Create</button>
+</div>
+
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Modal Overlay: Add Answer -->
+                <div class="modal-overlay no-transition" id="ModalOverLay2">
+                    <div class="section-container custom-width">
+                        <header class="popup-section-header">
+                            <h1 class="t1-pop-up-heading" style="margin-left:7px">
+                                <strong class="bold-text">Add a new answer<br></strong>
+                            </h1>
+                            <span class="cross-button-svg" id="cancel-button3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </header>
+
+                        <section class="section-box-popup">
+                            <div class="popup-sub-box popup-sub-box-child">
+                                <h2 class="section-subheading">Answer text</h2>
+                                <div class="section-input-wrapper no-top-margin2">
+                                    <input id="quoteTemplate22" type="text" class="section-input" placeholder="Enter Text">
+                                </div>
+
+                                <h2 class="section-subheading popup-heading">Would you like to associate a material or component?</h2>
+                                <div class="section-input-wrapper no-top-margin2" id="dynamic-wrapper">
+                                    <select id="mainSelect2" class="section-input selectt">
+                                        <option value="">Select</option>
+                                        <option value="Material">Material</option>
+                                        <option value="Component">Component</option>
+                                    </select>
+
+                                </div>
+
+                                <h2 class="section-subheading popup-heading">Next Question</h2>
+                                <div class="multi-select-container section-input-wrapper" id="multiSelect">
+                                    <input type="text" id="searchInput" class="multi-select-search section-input" placeholder="Search...">
+                                    <div class="multi-select-dropdown" id="dropdown"></div>
+                                </div>
+
+                                <input type="hidden" id="answerSelect" name="selectedIds" value="">
+                            </div>
+
+                            <div class="section-box-line"></div>
+
+                            <div class="popup-actions-wrapper">
+                                <button type="button" class="cancel-button" id="cancel-button4">Cancel</button>
+                                    <button type="button" class="delete-button hidden" id="modal-delete-button4">Delete</button>
+                                <button type="button" class="create-button" id="create-button4">Create</button>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <div class="form-section-line-breaker max-750"></div>
+        </div>
+    </div>
+    <div class="form-section max-750">
+        <div class="form-section-title-container">
+            <h1 class="from-section-title">Metafields</h1>
+        </div>
+
+        <div class="section-container">
+            <section class="section-box">
+                <div id="metaFieldsList">
+                    <!-- Question groups will be dynamically inserted here -->
+                </div>
+
+                <!-- Always show Add Group button -->
+                <div class="btn-add-wrapper" id="addMetaFieldsWrapper">
+                    <button class="btn-add" type="button" id="addMetaFieldsBtn">
+                        <img src="/images/plus-circle-svg.svg">
+                        <span class="btn-add-text">Add Metafield</span>
+                    </button>
+                </div>
+            </section>
+    <div class="form-section-line-breaker max-750"></div>
+        </div>
+
+    </div>
+
+    <div class="form-section max-750">
+        <div class="form-section-title-container">
+            <h1 class="from-section-title">Documents</h1>
+        </div>
+        <div class="section-container">
+            <section class="section-box">
+                <div id="documentsList"></div>
+                <div id="uploadedDocumentsGrid"></div>
+                <div class="btn-add-wrapper" id="addDocumentWrapper">
+                    <button class="btn-add" type="button" id="addDocumentBtn">
+                        <img src="/images/plus-circle-svg.svg">
+                        <span class="btn-add-text">Choose Document</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</div>
+<div id="aboutTemplateModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="cross-button-svg" id="closeAboutTemplate">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z"></path>
+            </svg>
+        </span>
+
+        <div class="modal-header">
+            <h2 id="aboutTemplateName">Template Name</h2>
+        </div>
+
+        <div class="modal-body">
+            <!-- Card with template info -->
+            <div class="template-card">
+                <span class="label">Template Name:</span>
+                <span class="value" id="aboutTemplateNameValue"></span>
+
+                <span class="label">Version:</span>
+                <span class="value" id="aboutTemplateVersion"></span>
+
+                <span class="label">Created By:</span>
+                <span class="value" id="aboutTemplateCreatedBy"></span>
+
+                <span class="label">Created On:</span>
+                <span class="value" id="aboutTemplateCreatedOn"></span>
+
+                <span class="label">Last Saved By:</span>
+                <span class="value" id="aboutTemplateLastSaved"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="metafield-modal-overlay" id="metaFieldsModal">
+    <div class="section-container custom-width">
+        <header class="popup-section-header">
+            <h1 class="t1-pop-up-heading" style="margin-left:7px">
+                <strong class="bold-text" id="metafieldModalHeading">Add a new metafield<br></strong>
+            </h1>
+            <span class="cross-button-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z">
+                    </path>
+                </svg>
+            </span>
+        </header>
+
+        <section class="section-box-popup">
+            <div class="popup-sub-box">
+                <h2 class="section-subheading">Name</h2>
+                <div class="section-input-wrapper">
+                    <input id="metaFieldNameInput" type="text" class="section-input">
+                </div>
+
+                <h2 class="section-subheading popup-heading">Type of Field</h2>
+                <div class="section-input-wrapper">
+                    <select class="section-input selectt" id="fieldTypeDropdown">
+                        <option selected>Single Line Text</option>
+                      @*   <option>Table</option> *@
+
+                    </select>
+                </div>
+              @*   <div class="hidden" id="styleDropdownConatainer">
+                    <h2 class="section-subheading popup-heading">Choose Style</h2>
+                    <div class="section-input-wrapper">
+                        <select class="section-input selectt" id="styleDropdown">
+                            <option selected>style1</option>
+                        </select>
+                    </div>
+                </div> *@
+               
+                <h2 class="section-subheading">Tag</h2>
+                <div class="section-input-wrapper">
+                    <input id="metaFieldTagsInput" type="text" class="section-input">
+                </div>
+
+                <h2 class="section-subheading popup-heading">Visibility</h2>
+                <div class="section-input-wrapper">
+                    <select class="section-input selectt" id="visibilityDropdown">
+                        <option selected>Admin only</option>
+                        <option>Customer and Admin</option>
+                    </select>
+
+                </div>
+
+    
+            </div>
+
+            <div class="section-box-line">
+                <div class="section-line-breaker"></div>
+            </div>
+
+            <div class="popup-actions-wrapper">
+
+                    <button type="button" class="delete-button hidden-btn" id="">Delete</button>
+                    <button type="button" class="cancel-button" id="">Cancel</button>
+                    <button type="button" class="create-button" id="metafield-modal-create-button">Create</button>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Modal for Extracted Metafields -->
+<div class="metafield-modal-overlay" id="extractedMetafieldsModal">
+    <div class="section-container custom-width">
+        <header class="popup-section-header">
+            <h1 class="t1-pop-up-heading" style="margin-left:7px">
+                <strong class="bold-text">Metafields</strong>
+            </h1>
+            <span class="cross-button-svg" id="closeExtractedMetafieldsModal">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z"></path>
+                </svg>
+            </span>
+        </header>
+        <section class="section-box-popup">
+            <div class="popup-sub-box" id="extractedMetafieldsBody" style="max-height: 400px; overflow-y: auto; padding: 0;">
+
+                <!-- Table will be rendered here -->
+            </div>
+            <div class="section-box-line">
+                <div class="section-line-breaker"></div>
+            </div>
+            <div class="popup-actions-wrapper">
+                <button type="button" class="cancel-button" id="cancelExtractedMetafieldsBtn">Cancel</button>
+                <button type="button" class="create-button" id="uploadExtractedMetafieldsBtn">Create</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="metafield-modal-overlay" id="iFramesModal">
+    <div class="section-container custom-width">
+        <header class="popup-section-header">
+            <h1 class="t1-pop-up-heading" style="margin-left:7px">
+                <strong class="bold-text" id="iFramesModalHeading">Add a new Iframe<br></strong>
+            </h1>
+            <span class="cross-button-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z">
+                    </path>
+                </svg>
+            </span>
+        </header>
+
+        <section class="section-box-popup">
+            <div class="popup-sub-box">
+                <h2 class="section-subheading">Website Name</h2>
+                <div class="section-input-wrapper">
+                    <input id="iFramesWebsiteNameInput" type="text" class="section-input">
+                </div>
+
+            </div>
+
+            <div class="section-box-line">
+                <div class="section-line-breaker"></div>
+            </div>
+
+            <div class="popup-actions-wrapper">
+                <div>
+                    <button type="button" class="delete-button hidden-btn" id="">Delete</button>
+
+                </div>
+                <div>
+                    <button type="button" class="cancel-button" id="">Cancel</button>
+                    <button type="button" class="create-button" id="iframe-modal-create-button">Create</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="metafield-modal-overlay" id="ViewiFramesModal">
+    <div class="section-container custom-width">
+        <header class="popup-section-header">
+            <h1 class="t1-pop-up-heading" style="margin-left:7px">
+                <strong class="bold-text" id="iFramesModalHeading">Iframe Links<br></strong>
+            </h1>
+            <span class="cross-button-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z">
+                    </path>
+                </svg>
+            </span>
+        </header>
+
+        <section class="section-box-popup">
+            <div class="popup-sub-box">
+                <div class="tableContainer scroll" style="max-height: 250px">
+                    <table id="table">
+                        <thead id="TableHead">
+                            <tr><th id="templateName">Website</th><th id="description">Link</th><th id="createdAt">Created At</th><th id="isActive">Status</th><th id="action">Action</th></tr>
+                        </thead>
+                        <tbody>
+
+
+                        </tbody>
+                    </table>
+                    <div id="noInfo" style="display: none;">
+                        <div class="noInfoInnerContainer">
+                            <div class="noInfoContentContainer">
+                                <img src="/images/search display.svg" alt="search Icon">
+                                <h1>No Links Found</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-box-line">
+                <div class="section-line-breaker"></div>
+            </div>
+
+            <div class="popup-actions-wrapper">
+                <div>
+                    <button type="button" class="cancel-button" id="">Close</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+@* <script src="~/js/Templates/multi-select.js" asp-append-version="true"></script> *@
+<script src="~/js/Templates/MetaFields.js" asp-append-version="true"></script> 
+@* <script src="~/js/Templates/TemplateBuilder_complete.js" asp-append-version="true"></script> *@
+@* <script src="~/js/Templates/MetafieldManager.js" asp-append-version="true"></script> *@
+<script src="~/js/Templates/MetafieldManager_Latest.js" asp-append-version="true"></script>
+<script src="~/js/Templates/DocumentManager_Latest.js" asp-append-version="true"></script> 
+ <script src="~/js/Templates/IframeManager.js" asp-append-version="true"></script>
+
+@* <script src="~/js/Templates/template_detail.js" asp-append-version="true"></script>  *@
+<script src="~/js/Templates/TemplateDetail_Latest.js" asp-append-version="true"></script> 
+
+ <script src="~/js/Templates/version-manager.js" asp-append-version="true"></script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

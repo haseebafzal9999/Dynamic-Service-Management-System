@@ -1,0 +1,149 @@
+﻿@model zentro.View_Model.UserModel
+
+<!DOCTYPE html>
+<html lang="en" data-wf-page="66f2a216066343224a26df39" data-wf-site="66f2a216066343224a26deed" data-page="@ViewData["PageName"]">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["PageName"] - Zentro</title>
+    <link rel="stylesheet" href="~/css/normalize.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/zentro.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:100,200,300,regular,500,600,700,800,900","Roboto:100,300,regular,500,700,900"]  }});</script>
+    <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+    <link href="/images/fox_icon_fav.png" rel="shortcut icon" type="image/x-icon">
+    <link href="/images/fox_icon_webclip.png" rel="apple-touch-icon">
+</head>
+<body class="body-linear">
+  <div class="modal-v"></div>
+  <section id="section_main" class="section main">
+    <div data-animation="over-left" data-collapse="small" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar w-nav">
+      <div class="notification-banner-nav-save">
+          <div class="save-overlay-container">
+              <div class="save-notification">
+                  <div class="save-notification-information">
+                      <div class="icon-embed-xxsmall w-embed">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%" fill="#ffffff" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img"><path d="M8 4a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 .75-.75"></path><path d="M8 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2"></path><path fill-rule="evenodd" d="M1.5 6.25a4.75 4.75 0 0 1 4.75-4.75h3.5a4.75 4.75 0 0 1 4.75 4.75v2.5a4.75 4.75 0 0 1-4.573 4.747l-1.335 1.714a.75.75 0 0 1-1.189-.007l-1.3-1.706a4.75 4.75 0 0 1-4.603-4.748zm4.75-3.25a3.25 3.25 0 0 0-3.25 3.25v2.5a3.25 3.25 0 0 0 3.25 3.25h.226c.234 0 .455.11.597.296l.934 1.225.96-1.232a.75.75 0 0 1 .591-.289h.192a3.25 3.25 0 0 0 3.25-3.25v-2.5a3.25 3.25 0 0 0-3.25-3.25z"></path></svg>
+                      </div>
+                      <div class="save-info-label">Unsaved changes</div>
+                  </div>
+                  <div class="save-notification-buttons">
+                    <a href="#" class="standard-button discard-btn w-button">Discard</a>
+                    <a href="#" class="standard-button save-btn w-button">Save</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="left-nav-container">
+        <a href="/" aria-current="page" class="logo-block w-inline-block w--current">
+           <img style="height:40px;" src="/images/zentro_logo_orange.png" />
+        </a>
+
+
+               
+      </div>
+
+      <div class="right-nav-container">
+        <div class="notification-container">
+          <div class="notification-wrap">
+            <div class="notification-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" style="fill: white;">
+                <path fill-rule="evenodd" d="m5.252 12.424-2.446-.281c-1.855-.213-2.38-2.659-.778-3.616l.065-.038a2.89 2.89 0 0 0 1.407-2.48v-.509a4.5 4.5 0 0 1 9 0v.51c0 1.016.535 1.958 1.408 2.479l.065.038c1.602.957 1.076 3.403-.778 3.616l-2.543.292v.365a2.7 2.7 0 0 1-5.4 0zm3.9.076h-2.4v.3a1.2 1.2 0 1 0 2.4 0zm-3.152-1.5h4l3.024-.348a.452.452 0 0 0 .18-.837l-.065-.038a4.4 4.4 0 0 1-.674-.495l-.073-.067a4.4 4.4 0 0 1-1.392-3.205v-.51a3 3 0 1 0-6 0v.51a4.4 4.4 0 0 1-1.391 3.205l-.073.067a4.6 4.6 0 0 1-.674.495l-.065.038a.453.453 0 0 0 .18.838z"></path>
+              </svg></div>
+          </div>
+        </div>
+        <div class="account-menu-container">
+          <div id="account-menu-btn" class="account-menu-wrap">
+            <div class="user-intials-container">
+              <div class="username-intials">@Model.Initials</div>
+            </div>
+            <div class="username-text">@Model.Name</div>
+          </div>
+          <div id="account-menu" class="polaris-box box-300 absolute account-menu">
+            <div class="polaris-box-list-item user-information">
+              <div class="polaris-box-list-item-inner-wrapper user-information">
+                <div class="user-information">
+                  <div id="username" class="polaris-box-item-text user-information">@Model.Name</div>
+                  <div id="email" class="polaris-box-item-text email-information">@Model.Email</div>
+                </div>
+              </div>
+            </div>
+            <div class="polaris-box-list-item user-information">
+              <div class="polaris-box-list-item-inner-wrapper">
+                <a id="manage-account" class="polaris-box-item w-inline-block">
+                  <div class="polaris-box-item-text">Manage Account</div>
+                </a>
+              </div>
+            </div>
+            <div class="polaris-box-list-item user-information">
+              <div class="polaris-box-list-item-inner-wrapper">
+                <a id="logout" class="polaris-box-item w-inline-block">
+                  <div class="polaris-box-item-text">Log out</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="menu_open_btn" data-w-id="d07cdd45-e824-392f-945c-084406a7471f" class="menu-button w-nav-button">
+        <div class="hamburger-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="#ffffff">
+            <path fill="#ffffff" fill-rule="evenodd" d="M1 2.75a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"></path>
+            <path fill-rule="evenodd" d="M1 8a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"></path>
+            <path fill-rule="evenodd" d="M1 13.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"></path>
+          </svg></div>
+      </div>
+      <div id="menu_close_btn" data-w-id="f0fdcffd-de2d-8c0a-eaab-c12a4332ac8f" class="menu-button-close">
+        <div class="hamburger-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="#ffffff">
+            <path fill="#ffffff" fill-rule="evenodd" d="M1 2.75a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"></path>
+            <path fill-rule="evenodd" d="M1 8a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"></path>
+            <path fill-rule="evenodd" d="M1 13.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"></path>
+          </svg></div>
+      </div>
+    </div>
+    <div class="container main">
+      <div data-w-id="d73cbf0c-469f-838a-099d-d350a7041d43" class="sidebar desktop">
+        <div id="menu" class="menu-wrapper">
+          <div class="menu-list-item-wrapper sticky-bottom-nav">
+            <div class="menu-list-item-inner-wrapper">
+              <a href="#" class="menu-list-item w-inline-block">
+                <div class="menu-list-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 2.176c0-.76.617-1.376 1.377-1.376h1.246c.76 0 1.376.616 1.376 1.376v.688c0 .19.126.396.358.517q.219.114.424.248c.221.144.465.152.632.056l.6-.347c.658-.38 1.5-.154 1.88.504l.622 1.08c.38.658.155 1.5-.503 1.88l-.648.373c-.163.094-.277.303-.269.56a5 5 0 0 1-.004.439c-.014.264.1.478.268.575l.653.377c.658.38.883 1.222.503 1.88l-.623 1.08a1.377 1.377 0 0 1-1.88.503l-.7-.405c-.164-.094-.401-.088-.62.048q-.164.102-.335.191c-.232.121-.358.326-.358.517v.811c0 .76-.616 1.376-1.376 1.376h-1.246c-.76 0-1.376-.616-1.376-1.376v-.81c0-.192-.127-.397-.359-.518a5 5 0 0 1-.333-.19c-.22-.138-.458-.143-.621-.049l-.7.405c-.659.38-1.5.154-1.88-.504l-.624-1.08a1.375 1.375 0 0 1 .504-1.879l.653-.377c.167-.097.282-.311.268-.575a5 5 0 0 1-.004-.439c.008-.257-.106-.465-.27-.56l-.647-.374a1.376 1.376 0 0 1-.504-1.88l.624-1.079a1.376 1.376 0 0 1 1.88-.504l.6.347c.166.096.41.088.631-.056q.205-.135.423-.248c.232-.121.359-.326.359-.517v-.688Zm2 7.324a1.5 1.5 0 1 0-.001-3.001 1.5 1.5 0 0 0 .001 3.001"></path>
+                  </svg></div>
+                <div class="menu-item-text">Settings</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-w-id="a6a6fbb3-0999-06dd-16ce-c04c513a3f10" class="sidebar-bg"></div>
+      <div class="main-view scroll">
+          <div class="statusBar hidden"><p>Account Closed</p></div>
+          <div class="main-window-container">
+              <div class="view-window">
+                 @RenderBody()
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+    <script src="~/js/general/zentro.js" asp-append-version="true"></script>
+    <script src="~/js/general/menu.js" asp-append-version="true"></script>
+    <script src="~/js/general/global.js" asp-append-version="true"></script>
+    <script src="~/js/general/general.js" asp-append-version="true"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("CSS", required: false)
+</body>
+</html>

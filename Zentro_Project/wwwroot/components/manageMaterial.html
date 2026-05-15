@@ -1,0 +1,88 @@
+﻿<div class="model-content" style="overflow: auto; max-width:661px; width:100%; max-height:90vh;">
+    <div class="model-header">
+        <div class="modal-window-header">
+            <div class="popup-title-container">
+                <h1 class="t1-pop-up-heading"><strong class="bold-text">Add a Material<br></strong></h1>
+            </div>
+            <div class="cross-button">
+                <div class="cross-button-svg w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="currentColor">
+                        <path d="M11.97 13.03a.749.749 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.749.749 0 1 0-1.06-1.06l-3.97 3.97-3.97-3.97a.749.749 0 1 0-1.06 1.06l3.97 3.97-3.97 3.97a.749.749 0 1 0 1.06 1.06l3.97-3.97z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="model-body pb-15">
+        <div class="polaris-container-with-ouline">
+            <div class="polaris-box-list-item-inner-wrapper form-flex-col">
+                <div class="polaris-form-cols" style="margin-bottom:10px;">
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Item Part No*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="itemPartNumber" type="text" class="polaris-form-field" autocomplete="none" data-type="date" data-itemPartNo data-required>
+                            </div>
+                        </div>
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Item Name*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="itemName" type="text" class="polaris-form-field" autocomplete="none" data-type="date" data-itemName data-required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polaris-form-cols" style="margin-bottom:10px;">
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Cost Price*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="costPrice" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-costPrice data-required>
+                            </div>
+                        </div>
+                        <div class="polaris-form-layout row-responsive">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Sell Price*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="sellPrice" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-sellPrice data-required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polaris-form-cols" style="margin-bottom:10px;">
+                    <div class="polaris-form-row">
+                        <div class="polaris-form-layout">
+                            <div class="polaris-form-label-wrapper">
+                                <div class="polaris-form-label">Supplier*</div>
+                            </div>
+                            <div class="polaris-form-field-wrapper">
+                                <input id="supplier" type="text" class="polaris-form-field" autocomplete="none" data-type="text" data-supplier data-required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polaris-form-layout">
+                    <div class="polaris-form-label-wrapper">
+                        <div class="polaris-form-label">Description</div>
+                    </div>
+                    <div class="polaris-form-field-wrapper">
+                        <textarea id="materialDes" class="polaris-form-field-textarea" autocomplete="none" maxlength="300" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="polaris-footer-line"></div>
+        <div class="buttons-row-container mt-40">
+            <button id="deleteMaterial" class="standard-button btn-small w-button hidden" style="background:#c70a24;width: auto;position: absolute;left: 20px;">Delete Material</button>
+            <button type="button" class="standard-button mr-10 cancel-btn-model w-button">Cancel</button>
+            <button type="button" id="createMaterial" class="standard-button model-save-btn w-button">Save</button>
+        </div>
+    </div>
+</div>
